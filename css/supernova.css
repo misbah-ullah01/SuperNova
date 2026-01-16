@@ -921,13 +921,11 @@
 
     /* Portfolio grid mobile fix */
     .portfolio-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+        grid-template-columns: 1fr !important;
     }
 
     .portfolio-item {
         min-height: 200px;
-        grid-row: span 1 !important;
     }
 
     /* Container mobile fix */
