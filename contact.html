@@ -21,20 +21,29 @@
 <body>
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="navbar-container">
+        <div class="nav-container">
             <a href="index.html" class="logo logo-supernova"><span class="logo-icon">✦</span> SuperNova</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="nav-link dropdown-toggle">Services <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content">Content Creation</a></li>
+                        <li><a href="services.html#strategy">Strategy & Analytics</a></li>
+                        <li><a href="services.html#advertising">Paid Advertising</a></li>
+                    </ul>
+                </li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
-            <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <a href="contact.html" class="btn btn-primary nav-cta">Get Started</a>
         </div>
     </nav>
 
