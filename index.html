@@ -450,38 +450,6 @@
             if (window.SuperNovaEffects) {
                 window.SuperNovaEffects.initSupernovaHero();
             }
-
-            // Animate stats counter
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const animateStats = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const count = parseInt(target.getAttribute('data-count'));
-                        const duration = 2000;
-                        const step = count / (duration / 16);
-                        let current = 0;
-
-                        const counter = setInterval(() => {
-                            current += step;
-                            if (current >= count) {
-                                target.textContent = count;
-                                clearInterval(counter);
-                            } else {
-                                target.textContent = Math.floor(current);
-                            }
-                        }, 16);
-
-                        observer.unobserve(target);
-                    }
-                });
-            };
-
-            const statsObserver = new IntersectionObserver(animateStats, {
-                threshold: 0.5
-            });
-
-            statNumbers.forEach(stat => statsObserver.observe(stat));
         });
     </script>
 </body>
