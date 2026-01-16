@@ -557,10 +557,25 @@
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile Toggle Button Animation */
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Nav Menu - horizontal layout */
@@ -726,20 +741,39 @@
    RESPONSIVE DESIGN
    ============================================ */
 
+/* Ensure nothing overflows on mobile */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
     .supernova-title {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(1.6rem, 8vw, 2.5rem);
         letter-spacing: 0.02em;
     }
 
     .supernova-slogan {
-        font-size: clamp(0.8rem, 3vw, 1rem);
-        letter-spacing: 0.1em;
+        font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+        letter-spacing: 0.06em;
         margin-bottom: 1rem;
     }
 
+    .hero-cosmic {
+        padding: 0 0.5rem;
+    }
+
     .hero-cosmic-content {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
+        max-width: 100%;
     }
 
     .hero-description {
@@ -867,37 +901,81 @@
 
     /* Logo size on mobile */
     .logo-supernova {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+    /* Navbar on mobile - prevent overflow */
+    .navbar {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Portfolio grid mobile fix */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .portfolio-item {
+        min-height: 200px;
+        grid-row: span 1 !important;
+    }
+
+    /* Container mobile fix */
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Section padding mobile */
+    section {
+        padding: 2rem 1rem;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
 }
 
 @media (max-width: 480px) {
     .supernova-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .supernova-slogan {
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
+        font-size: 0.65rem;
+        letter-spacing: 0.05em;
     }
 
     .hero-description {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         line-height: 1.5;
     }
 
     .btn-cosmic {
-        max-width: 240px;
-        padding: 0.8rem 1.2rem;
-        font-size: 0.8rem;
+        max-width: 220px;
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
     }
 
     .stat-number {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .stat-label {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+    }
+
+    .logo-supernova {
+        font-size: 1rem;
     }
 
     /* Hide shooting stars on very small screens */
@@ -908,9 +986,13 @@
     .cosmic-orb-1,
     .cosmic-orb-2,
     .cosmic-orb-3 {
-        width: 100px;
-        height: 100px;
-        opacity: 0.2;
+        width: 80px;
+        height: 80px;
+        opacity: 0.15;
+    }
+
+    .nav-container {
+        padding: 0.5rem 0.75rem;
     }
 }
 
