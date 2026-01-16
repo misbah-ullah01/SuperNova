@@ -17,7 +17,7 @@ class CosmicStarField {
 
     init() {
         this.createStars(150); // Regular stars
-        this.createShootingStars(5); // Shooting stars
+        this.createShootingStars(2); // Fewer shooting stars
         this.startShootingStarCycle();
     }
 
@@ -48,13 +48,13 @@ class CosmicStarField {
             const shootingStar = document.createElement('div');
             shootingStar.className = 'shooting-star';
 
-            // Random starting position (top area)
-            shootingStar.style.left = Math.random() * 70 + '%';
-            shootingStar.style.top = Math.random() * 30 + '%';
+            // Random starting position (top-left area)
+            shootingStar.style.left = Math.random() * 50 + '%';
+            shootingStar.style.top = Math.random() * 40 + '%';
 
-            // Random timing
-            shootingStar.style.setProperty('--shoot-duration', (Math.random() * 2 + 3) + 's');
-            shootingStar.style.setProperty('--shoot-delay', (Math.random() * 10 + 5) + 's');
+            // Longer timing for less frequent shooting stars
+            shootingStar.style.setProperty('--shoot-duration', (Math.random() * 2 + 4) + 's');
+            shootingStar.style.setProperty('--shoot-delay', (Math.random() * 15 + 10) + 's');
 
             this.container.appendChild(shootingStar);
             this.shootingStars.push(shootingStar);
@@ -62,14 +62,14 @@ class CosmicStarField {
     }
 
     startShootingStarCycle() {
-        // Randomly trigger shooting stars
+        // Randomly trigger shooting stars less frequently
         setInterval(() => {
             const star = this.shootingStars[Math.floor(Math.random() * this.shootingStars.length)];
             if (star) {
-                star.style.left = Math.random() * 70 + '%';
-                star.style.top = Math.random() * 30 + '%';
+                star.style.left = Math.random() * 50 + '%';
+                star.style.top = Math.random() * 40 + '%';
             }
-        }, 8000);
+        }, 15000);
     }
 }
 

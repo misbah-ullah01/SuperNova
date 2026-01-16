@@ -72,10 +72,11 @@
 /* Shooting Stars */
 .shooting-star {
     position: absolute;
-    width: 100px;
+    width: 80px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.8), rgba(255, 255, 255, 1));
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(34, 211, 238, 0.8), transparent);
     border-radius: 50%;
+    transform: rotate(-45deg);
     animation: shootingStar var(--shoot-duration) ease-out infinite;
     animation-delay: var(--shoot-delay);
     opacity: 0;
@@ -83,7 +84,7 @@
 
 @keyframes shootingStar {
     0% {
-        transform: translateX(0) translateY(0) rotate(-45deg);
+        transform: rotate(-45deg) translateX(0);
         opacity: 0;
     }
 
@@ -91,12 +92,13 @@
         opacity: 1;
     }
 
-    20% {
-        transform: translateX(300px) translateY(300px) rotate(-45deg);
+    30% {
+        transform: rotate(-45deg) translateX(400px);
         opacity: 0;
     }
 
     100% {
+        transform: rotate(-45deg) translateX(400px);
         opacity: 0;
     }
 }
@@ -726,13 +728,23 @@
 
 @media (max-width: 768px) {
     .supernova-title {
-        font-size: clamp(2rem, 12vw, 4rem);
+        font-size: clamp(2rem, 10vw, 3rem);
         letter-spacing: 0.02em;
     }
 
     .supernova-slogan {
-        font-size: clamp(0.9rem, 4vw, 1.2rem);
-        letter-spacing: 0.15em;
+        font-size: clamp(0.8rem, 3vw, 1rem);
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+
+    .hero-cosmic-content {
+        padding: 0 1rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
     }
 
     .hero-cosmic-buttons {
@@ -742,14 +754,17 @@
 
     .btn-cosmic {
         width: 100%;
-        max-width: 280px;
+        max-width: 260px;
+        padding: 0.9rem 1.5rem;
+        font-size: 0.85rem;
     }
 
     .cosmic-orb-1,
     .cosmic-orb-2,
     .cosmic-orb-3 {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
+        opacity: 0.3;
     }
 
     .cosmic-scroll-indicator {
@@ -759,6 +774,15 @@
     .hero-stats {
         flex-direction: column;
         gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .stat-item {
+        padding: 0.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
     }
 
     .stat-divider {
@@ -768,6 +792,7 @@
     .hero-cta-group {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
     }
 
     .services-grid {
@@ -786,9 +811,15 @@
         grid-template-columns: 1fr;
     }
 
+    /* Shooting stars - smaller and less visible on mobile */
+    .shooting-star {
+        width: 50px;
+    }
+
     /* Mobile Navbar */
     .nav-container {
         flex-wrap: wrap;
+        padding: 0 1rem;
     }
 
     .mobile-toggle {
@@ -831,20 +862,55 @@
     }
 
     .nav-cta {
-        margin: 1rem 0 0 0;
-        width: 100%;
-        text-align: center;
+        display: none;
+    }
+
+    /* Logo size on mobile */
+    .logo-supernova {
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
     .supernova-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .supernova-slogan {
-        font-size: 0.9rem;
-        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+    }
+
+    .hero-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .btn-cosmic {
+        max-width: 240px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    /* Hide shooting stars on very small screens */
+    .shooting-star {
+        display: none;
+    }
+
+    .cosmic-orb-1,
+    .cosmic-orb-2,
+    .cosmic-orb-3 {
+        width: 100px;
+        height: 100px;
+        opacity: 0.2;
     }
 }
 
