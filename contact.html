@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact SuperNova - Get in touch with our creative team">
+    <title>Contact | SuperNova - Powering Your Presence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/supernova.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo logo-supernova"><span class="logo-icon">✦</span> SuperNova</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 60vh; padding-top: calc(100px + var(--spacing-2xl));">
+        <div class="animated-bg" data-parallax="0.5"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-subtitle">💬 Let's Talk</div>
+                <h1 class="hero-title">Get in Touch</h1>
+                <p class="hero-description">
+                    Have a question or project in mind? We'd love to hear from you. Our team is ready to help bring your
+                    vision to life.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact">
+        <div class="contact-container">
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+
+                <!-- Email -->
+                <div class="contact-method">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:hello@supernova.agency">hello@supernova.agency</a>
+                    </div>
+                    <div class="contact-value" style="font-size: 0.95rem;">
+                        <a href="mailto:projects@supernova.agency">projects@supernova.agency</a>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-method">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">
+                        <a href="tel:+14155552368">+1 (415) 555-2368</a>
+                    </div>
+                    <div class="contact-value" style="font-size: 0.95rem;">
+                        <a href="tel:+14155559876">+1 (415) 555-9876</a>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-method">
+                    <div class="contact-label">Address</div>
+                    <div class="contact-value">
+                        123 Creative Avenue<br>
+                        San Francisco, CA 94105<br>
+                        United States
+                    </div>
+                </div>
+
+                <!-- Hours -->
+                <div class="contact-method">
+                    <div class="contact-label">Business Hours</div>
+                    <div class="contact-value">
+                        Monday – Friday: 9:00 AM – 6:00 PM<br>
+                        Saturday: 10:00 AM – 4:00 PM<br>
+                        Sunday: Closed
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div
+                    style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-light);">
+                    <div class="contact-label">Follow Us</div>
+                    <div class="social-links" style="margin-top: var(--spacing-md);">
+                        <a href="#" class="social-link" title="Instagram">📷</a>
+                        <a href="#" class="social-link" title="Twitter">𝕏</a>
+                        <a href="#" class="social-link" title="LinkedIn">💼</a>
+                        <a href="#" class="social-link" title="Facebook">f</a>
+                        <a href="#" class="social-link" title="YouTube">▶️</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div>
+                <h2 style="margin-bottom: var(--spacing-lg);">Send us a Message</h2>
+
+                <form class="contact-form" data-rate-limit="true">
+                    <!-- Honeypot Field (hidden from users, bots will fill it) -->
+                    <div class="form-group" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"
+                        aria-hidden="true">
+                        <input type="text" class="form-input" name="website" placeholder="Leave this empty"
+                            tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <!-- CSRF Token (generated by JavaScript) -->
+                    <input type="hidden" name="csrf_token" id="csrf_token" value="">
+
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="name" placeholder="Your Full Name" required
+                            maxlength="100" pattern="[a-zA-Z\s]{2,100}">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" placeholder="Your Email Address" required
+                            maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="subject" placeholder="Project Subject" required
+                            maxlength="200">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-input" name="service" required style="cursor: pointer;">
+                            <option value="content-creation">Content Creation</option>
+                            <option value="social-media">Social Media Strategy</option>
+                            <option value="video-production">Video Production</option>
+                            <option value="branding">Branding</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-textarea" name="message" placeholder="Tell us about your project..."
+                            required maxlength="2000"></textarea>
+                    </div>
+
+                    <div
+                        style="display: flex; align-items: center; gap: var(--spacing-md); font-size: 0.9rem; color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                        <input type="checkbox" id="privacy" name="privacy" required style="cursor: pointer;">
+                        <label for="privacy" style="cursor: pointer;">
+                            I agree to the privacy policy and terms of service
+                        </label>
+                    </div>
+
+                    <!-- Google reCAPTCHA v3 Badge -->
+                    <div class="g-recaptcha" id="recaptcha-badge" style="margin-bottom: var(--spacing-md);">
+                        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                            This site is protected by reCAPTCHA and the Google
+                            <a href="https://policies.google.com/privacy" style="color: var(--accent-sky);">Privacy
+                                Policy</a> and
+                            <a href="https://policies.google.com/terms" style="color: var(--accent-sky);">Terms of
+                                Service</a> apply.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-button"
+                        style="width: 100%; padding: 1.125rem 2rem; font-size: 1rem;">
+                        Send Message
+                    </button>
+                </form>
+
+                <p
+                    style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: var(--spacing-lg);">
+                    We typically respond within 24 hours during business days.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section style="background: var(--bg-dark);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Frequently Asked Questions</h2>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <!-- FAQ Item 1 -->
+                <div class="card" style="margin-bottom: var(--spacing-lg); cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">What is your typical project timeline?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        Project timelines vary based on scope and complexity. Typically, small projects take 2-4 weeks,
+                        medium projects 4-8 weeks, and larger campaigns 8-12 weeks or more. We'll provide a detailed
+                        timeline during the initial consultation.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="card" style="margin-bottom: var(--spacing-lg); cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">Do you work with startups?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        Absolutely! We work with startups, established businesses, and everything in between. Our
+                        Starter package is specifically designed for growing businesses with limited budgets. We believe
+                        great creative is for everyone.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="card" style="margin-bottom: var(--spacing-lg); cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">What is included in your packages?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        Each package includes social media content creation, strategy support, and reporting. The number
+                        of posts, videos, and services increase with each tier. Check our Services page for detailed
+                        breakdowns of each package.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="card" style="margin-bottom: var(--spacing-lg); cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">How do you measure success?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        We track KPIs including engagement rates, reach, conversions, and ROI. Each project starts with
+                        defined goals, and we provide regular reporting on progress. Your success metrics guide our
+                        strategy.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="card" style="margin-bottom: var(--spacing-lg); cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">Can I upgrade or downgrade my package?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        Yes! We offer flexibility in our packages. You can upgrade or downgrade based on your needs.
+                        Just reach out to your account manager to discuss changes.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="card" style="cursor: pointer;" onclick="toggleFAQ(this)">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">What industries do you specialize in?</h3>
+                        <span style="color: var(--accent-light); font-size: 1.5rem;">+</span>
+                    </div>
+                    <div class="faq-answer"
+                        style="display: none; margin-top: var(--spacing-md); color: var(--text-secondary); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                        We work across diverse industries including fashion, tech, e-commerce, food & beverage, finance,
+                        and more. Our diverse team brings expertise across multiple sectors, allowing us to understand
+                        unique market dynamics.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION (Placeholder) -->
+    <section style="background: var(--bg-dark); padding: var(--spacing-xl) var(--spacing-lg);">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--text-secondary);">Find Us</h3>
+            <div
+                style="width: 100%; height: 400px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%); border-radius: 20px; border: 2px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📍</div>
+                    <p>San Francisco, CA • New York, NY • London, UK • Singapore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="logo-supernova"
+                    style="background: linear-gradient(135deg, var(--text-primary) 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    <span style="-webkit-text-fill-color: #22d3ee;">✦</span> SuperNova
+                </h3>
+                <p style="color: var(--text-secondary); margin-top: var(--spacing-md); font-size: 0.95rem;">
+                    Premium content creation and social media marketing agency. Powering your presence.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Pricing</a></li>
+                    <li><a href="services.html">Video Production</a></li>
+                    <li><a href="services.html">Strategy</a></li>
+                    <li><a href="services.html">Design</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html">Team</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Instagram">📷</a>
+                    <a href="#" class="social-link" title="Twitter">𝕏</a>
+                    <a href="#" class="social-link" title="LinkedIn">💼</a>
+                    <a href="#" class="social-link" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 SuperNova Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/supernova.js"></script>
+
+    <!-- FAQ Toggle Script -->
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('span');
+
+            // Close other FAQs
+            document.querySelectorAll('.faq-answer').forEach(el => {
+                if (el !== answer) {
+                    el.style.display = 'none';
+                    el.parentElement.querySelector('span').textContent = '+';
+                }
+            });
+
+            // Toggle current FAQ
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                icon.textContent = '−';
+            } else {
+                answer.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
+    </script>
+    <script src="js/animations.js"></script>
+</body>
+
+</html>

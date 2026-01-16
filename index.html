@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperNova | Powering Your Presence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/supernova.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo logo-supernova">
+                <span class="logo-icon">✦</span>
+                SuperNova
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="nav-link dropdown-toggle">Services <span
+                            class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content">Content Creation</a></li>
+                        <li><a href="services.html#strategy">Strategy & Analytics</a></li>
+                        <li><a href="services.html#advertising">Paid Advertising</a></li>
+                    </ul>
+                </li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Cosmic Hero Section -->
+    <section class="hero-cosmic" id="hero">
+        <!-- Animated Background Layers -->
+        <canvas id="cosmic-canvas" class="cosmic-canvas"></canvas>
+        <div class="stars-container" id="stars-container"></div>
+        <div class="light-wave"></div>
+        <div class="nebula"></div>
+
+        <!-- Floating Cosmic Orbs -->
+        <div class="cosmic-orb cosmic-orb-1"></div>
+        <div class="cosmic-orb cosmic-orb-2"></div>
+        <div class="cosmic-orb cosmic-orb-3"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-cosmic-content">
+            <div class="hero-badge animate-fade-in">
+                <span class="badge-icon">⚡</span>
+                Creative Agency Excellence
+            </div>
+
+            <h1 class="supernova-title" id="supernova-title" data-text="SuperNova">
+                <span class="title-text">SuperNova</span>
+                <span class="typing-cursor">|</span>
+            </h1>
+
+            <p class="supernova-slogan animate-fade-in-delay" id="supernova-slogan">
+                Powering Your Presence
+            </p>
+
+            <div class="animated-underline"></div>
+
+            <p class="hero-description animate-fade-in-delay-2">
+                We transform brands into digital constellations. Our creative strategies
+                illuminate your path to success across every platform.
+            </p>
+
+            <div class="hero-cta-group animate-fade-in-delay-3">
+                <a href="contact.html" class="btn-cosmic btn-cosmic-primary">
+                    <span class="btn-text">Launch Your Brand</span>
+                    <span class="btn-icon">→</span>
+                    <span class="btn-glow"></span>
+                </a>
+                <a href="portfolio.html" class="btn-cosmic btn-cosmic-secondary">
+                    <span class="btn-text">View Our Work</span>
+                    <span class="btn-icon">◈</span>
+                </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="hero-stats animate-fade-in-delay-4">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Projects Launched</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-suffix">%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-suffix">M+</span>
+                    <span class="stat-label">Reach Generated</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="cosmic-scroll-indicator">
+            <span class="scroll-text">Explore</span>
+            <div class="scroll-line">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview Section -->
+    <section class="section services-preview" id="services">
+        <div class="container">
+            <div class="section-header text-center scroll-reveal">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Our <span class="gradient-text">Stellar</span> Services</h2>
+                <p class="section-subtitle">Comprehensive digital solutions to elevate your brand across the universe
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card scroll-reveal" data-delay="0">
+                    <div class="service-icon">
+                        <span>📱</span>
+                    </div>
+                    <h3>Social Media Management</h3>
+                    <p>Strategic content planning, community engagement, and growth optimization across all major
+                        platforms.</p>
+                    <a href="services.html#social-media" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card scroll-reveal" data-delay="100">
+                    <div class="service-icon">
+                        <span>🎨</span>
+                    </div>
+                    <h3>Content Creation</h3>
+                    <p>Stunning visuals, compelling copy, and engaging video content that captures attention and drives
+                        results.</p>
+                    <a href="services.html#content" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card scroll-reveal" data-delay="200">
+                    <div class="service-icon">
+                        <span>📊</span>
+                    </div>
+                    <h3>Strategy & Analytics</h3>
+                    <p>Data-driven insights and comprehensive strategies that maximize your digital impact and ROI.</p>
+                    <a href="services.html#strategy" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card scroll-reveal" data-delay="300">
+                    <div class="service-icon">
+                        <span>🚀</span>
+                    </div>
+                    <h3>Paid Advertising</h3>
+                    <p>Targeted campaigns across social platforms that deliver measurable results and exceptional
+                        returns.</p>
+                    <a href="services.html#advertising" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-grid">
+                <div class="why-us-content scroll-reveal">
+                    <span class="section-tag">Why SuperNova</span>
+                    <h2 class="section-title">We Don't Just Create Content.<br><span class="gradient-text">We Ignite
+                            Galaxies.</span></h2>
+                    <p class="section-text">At SuperNova, we combine creative excellence with data-driven strategies to
+                        deliver results that matter. Our team of experts works tirelessly to ensure your brand shines
+                        brightest in the digital cosmos.</p>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Results-Driven Approach</h4>
+                                <p>Every strategy is backed by data and designed for measurable success.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Dedicated Team</h4>
+                                <p>Your success is managed by a team of specialists, not just one person.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>24/7 Support</h4>
+                                <p>Round-the-clock support to keep your digital presence running smoothly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="btn btn-primary">Discover Our Story →</a>
+                </div>
+
+                <div class="why-us-visual scroll-reveal" data-delay="200">
+                    <div class="visual-card">
+                        <div class="visual-bg"></div>
+                        <div class="visual-content">
+                            <div class="achievement-badge">
+                                <span class="badge-number">5+</span>
+                                <span class="badge-text">Years of Excellence</span>
+                            </div>
+                            <div class="client-logos">
+                                <div class="logo-placeholder">Brand</div>
+                                <div class="logo-placeholder">Brand</div>
+                                <div class="logo-placeholder">Brand</div>
+                                <div class="logo-placeholder">Brand</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section -->
+    <section class="section portfolio-preview" id="work">
+        <div class="container">
+            <div class="section-header text-center scroll-reveal">
+                <span class="section-tag">Our Work</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="section-subtitle">Explore some of our recent success stories</p>
+            </div>
+
+            <div class="portfolio-showcase">
+                <div class="portfolio-item large scroll-reveal">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder gradient-1">
+                            <span>Fashion Brand Campaign</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Social Media</span>
+                        <h3>Luxe Fashion Co.</h3>
+                        <p>300% increase in engagement</p>
+                        <a href="portfolio.html" class="portfolio-link">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-reveal" data-delay="100">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder gradient-2">
+                            <span>Tech Startup Launch</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Content Strategy</span>
+                        <h3>InnovateTech</h3>
+                        <p>50K followers in 3 months</p>
+                        <a href="portfolio.html" class="portfolio-link">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-reveal" data-delay="200">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder gradient-3">
+                            <span>Restaurant Rebrand</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Brand Identity</span>
+                        <h3>Saveur Bistro</h3>
+                        <p>200% increase in reservations</p>
+                        <a href="portfolio.html" class="portfolio-link">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center scroll-reveal" data-delay="300">
+                <a href="portfolio.html" class="btn btn-secondary">View All Projects →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center scroll-reveal">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Our <span class="gradient-text">Clients</span> Say</h2>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>SuperNova transformed our social media presence completely. Their strategic approach and
+                            creative content helped us reach audiences we never thought possible. The results speak for
+                            themselves!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>JD</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Jessica Davis</h4>
+                            <p>CEO, Luxe Fashion Co.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal" data-delay="100">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Working with SuperNova was a game-changer for our startup. They understood our vision and
+                            translated it into content that resonated with our target audience. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>MR</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Roberts</h4>
+                            <p>Founder, InnovateTech</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-reveal" data-delay="200">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>The team at SuperNova doesn't just deliver content – they deliver results. Our engagement
+                            rates have skyrocketed, and we've seen a direct impact on our bottom line. Amazing work!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>SC</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Chen</h4>
+                            <p>Marketing Director, Saveur Bistro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card scroll-reveal">
+                <div class="cta-content">
+                    <h2>Ready to Launch Your Brand Into Orbit?</h2>
+                    <p>Let's create something extraordinary together. Get in touch and let's discuss how we can elevate
+                        your digital presence.</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn-light">Start Your Journey →</a>
+                        <a href="tel:+1234567890" class="btn btn-outline-light">Call Us: (123) 456-7890</a>
+                    </div>
+                </div>
+                <div class="cta-decoration">
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo logo-supernova">
+                        <span class="logo-icon">✦</span>
+                        SuperNova
+                    </a>
+                    <p>Powering your presence across the digital universe. We create content that converts and
+                        strategies that scale.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                        <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content">Content Creation</a></li>
+                        <li><a href="services.html#strategy">Strategy & Analytics</a></li>
+                        <li><a href="services.html#advertising">Paid Advertising</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>📍 123 Creative Street, Digital City, DC 10001</li>
+                        <li>📞 (123) 456-7890</li>
+                        <li>✉️ hello@supernova.agency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SuperNova Agency. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/supernova.js"></script>
+    <script>
+        // Initialize SuperNova Hero Effects
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize cosmic effects
+            if (window.SuperNovaEffects) {
+                window.SuperNovaEffects.initSupernovaHero();
+            }
+
+            // Animate stats counter
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const animateStats = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const count = parseInt(target.getAttribute('data-count'));
+                        const duration = 2000;
+                        const step = count / (duration / 16);
+                        let current = 0;
+
+                        const counter = setInterval(() => {
+                            current += step;
+                            if (current >= count) {
+                                target.textContent = count;
+                                clearInterval(counter);
+                            } else {
+                                target.textContent = Math.floor(current);
+                            }
+                        }, 16);
+
+                        observer.unobserve(target);
+                    }
+                });
+            };
+
+            const statsObserver = new IntersectionObserver(animateStats, {
+                threshold: 0.5
+            });
+
+            statNumbers.forEach(stat => statsObserver.observe(stat));
+        });
+    </script>
+</body>
+
+</html>

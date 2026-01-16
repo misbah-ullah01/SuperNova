@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Portfolio - Showcase of creative projects and successful campaigns">
+    <title>Portfolio | SuperNova - Powering Your Presence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/supernova.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo logo-supernova"><span class="logo-icon">✦</span> SuperNova</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 60vh; padding-top: calc(100px + var(--spacing-2xl));">
+        <div class="animated-bg" data-parallax="0.5"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-subtitle">🎯 Our Work</div>
+                <h1 class="hero-title">Creativity Unleashed</h1>
+                <p class="hero-description">
+                    Explore our collection of successful campaigns, viral content, and brand transformations that speak
+                    for themselves.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER SECTION -->
+    <section style="background: var(--bg-dark); padding: var(--spacing-lg);">
+        <div class="container">
+            <div style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap;">
+                <button class="btn btn-primary portfolio-filter-btn active" data-filter="all">All Projects</button>
+                <button class="btn btn-secondary portfolio-filter-btn" data-filter="branding">Branding</button>
+                <button class="btn btn-secondary portfolio-filter-btn" data-filter="video">Videos</button>
+                <button class="btn btn-secondary portfolio-filter-btn" data-filter="social">Social Media</button>
+                <button class="btn btn-secondary portfolio-filter-btn" data-filter="ecommerce">E-Commerce</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio" style="background: var(--bg-dark);">
+        <div class="container">
+            <div class="portfolio-grid">
+
+                <!-- Project 1 -->
+                <div class="portfolio-item" data-category="branding"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(96, 165, 250, 0.15) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        ✨</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Branding</div>
+                        <div class="portfolio-title">Luxury Fashion Brand Rebrand</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">
+                            Complete visual identity redesign and social media campaign</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item" data-category="video"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%); grid-row: span 2;">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        🎬</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Video Production</div>
+                        <div class="portfolio-title">Tech Startup Launch Campaign</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">4K
+                            promotional videos, reels, and animations</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item" data-category="social"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.25) 0%, rgba(96, 165, 250, 0.12) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        📱</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Social Media</div>
+                        <div class="portfolio-title">Viral TikTok Campaign</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">
+                            Reached 5M+ views in 2 weeks</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item" data-category="ecommerce"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(96, 165, 250, 0.08) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        🛍️</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">E-Commerce</div>
+                        <div class="portfolio-title">Product Photography Series</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">200+
+                            product images with lifestyle shots</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item" data-category="branding"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        🎨</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Branding</div>
+                        <div class="portfolio-title">Restaurant Brand Identity</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">Logo,
+                            menu design, and environmental graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item" data-category="social"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.22) 0%, rgba(96, 165, 250, 0.11) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        🌟</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Social Media</div>
+                        <div class="portfolio-title">Influencer Partnership Campaign</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">
+                            Managed 10+ influencer collaborations</p>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="portfolio-item" data-category="video"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.18) 0%, rgba(96, 165, 250, 0.09) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        🎥</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Video</div>
+                        <div class="portfolio-title">Corporate Training Videos</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">12
+                            educational videos with motion graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="portfolio-item" data-category="ecommerce"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%);">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        📊</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">E-Commerce</div>
+                        <div class="portfolio-title">Amazon A+ Content Creation</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">
+                            Increased conversion by 45%</p>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="portfolio-item" data-category="branding"
+                    style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.25) 0%, rgba(96, 165, 250, 0.12) 100%); grid-row: span 2;">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        💡</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Branding</div>
+                        <div class="portfolio-title">Complete Brand Strategy</div>
+                        <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary);">
+                            Positioned brand as industry leader</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section
+        style="background: linear-gradient(135deg, rgba(10, 31, 58, 0.5) 0%, rgba(26, 58, 82, 0.5) 100%); padding: var(--spacing-2xl) var(--spacing-lg);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Our Portfolio Impact</h2>
+
+            <div class="grid-4 text-center">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Brands Elevated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2.5M</div>
+                    <div class="stat-label">Social Impressions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section style="background: var(--bg-dark);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">What Our Clients Say</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div style="margin-bottom: var(--spacing-md); color: #fbbf24; font-size: 1.25rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="margin-bottom: var(--spacing-md); font-style: italic;">
+                        "Synapse completely transformed our social media presence. The content they create is not just
+                        beautiful – it converts."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-2); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                            JS</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--text-primary);">Jessica Smith</div>
+                            <div style="color: var(--text-muted); font-size: 0.85rem;">CEO, Luxury Goods Co.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="margin-bottom: var(--spacing-md); color: #fbbf24; font-size: 1.25rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="margin-bottom: var(--spacing-md); font-style: italic;">
+                        "Professional, creative, and results-driven. They understood our vision immediately and executed
+                        flawlessly."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-2); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                            MJ</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--text-primary);">Michael Johnson</div>
+                            <div style="color: var(--text-muted); font-size: 0.85rem;">Founder, TechStart Inc.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="margin-bottom: var(--spacing-md); color: #fbbf24; font-size: 1.25rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="margin-bottom: var(--spacing-md); font-style: italic;">
+                        "Best investment we made for our brand. Their team is talented, responsive, and truly invested
+                        in our success."
+                    </p>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-2); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                            SL</div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--text-primary);">Sarah Lee</div>
+                            <div style="color: var(--text-muted); font-size: 0.85rem;">Marketing Director, Fashion Brand
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section
+        style="background: var(--gradient-1); position: relative; overflow: hidden; text-align: center; padding: var(--spacing-2xl) var(--spacing-lg);">
+        <div class="animated-bg" style="opacity: 0.5;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h2 style="margin-bottom: var(--spacing-lg);">Ready to Add Your Project to Our Portfolio?</h2>
+            <p
+                style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Let's create something remarkable together. Get in touch today.
+            </p>
+            <a href="contact.html" class="btn btn-primary btn-lg">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="logo-supernova"
+                    style="background: linear-gradient(135deg, var(--text-primary) 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    <span style="-webkit-text-fill-color: #22d3ee;">✦</span> SuperNova
+                </h3>
+                <p style="color: var(--text-secondary); margin-top: var(--spacing-md); font-size: 0.95rem;">
+                    Premium content creation and social media marketing agency. Powering your presence.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Pricing</a></li>
+                    <li><a href="services.html">Video Production</a></li>
+                    <li><a href="services.html">Strategy</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html">Team</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Instagram">📷</a>
+                    <a href="#" class="social-link" title="Twitter">𝕏</a>
+                    <a href="#" class="social-link" title="LinkedIn">💼</a>
+                    <a href="#" class="social-link" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 SuperNova Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/supernova.js"></script>
+</body>
+
+</html>
