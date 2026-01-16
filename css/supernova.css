@@ -757,23 +757,27 @@
     }
 
     .supernova-title {
-        font-size: clamp(1.6rem, 8vw, 2.5rem);
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
         letter-spacing: 0.02em;
+        margin-top: 0;
     }
 
     .supernova-slogan {
-        font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
         letter-spacing: 0.06em;
         margin-bottom: 1rem;
     }
 
     .hero-cosmic {
         padding: 0 0.5rem;
+        padding-top: 100px;
+        min-height: 100vh;
     }
 
     .hero-cosmic-content {
-        padding: 0 0.5rem;
+        padding: 0 1rem;
         max-width: 100%;
+        padding-top: 2rem;
     }
 
     .hero-description {
