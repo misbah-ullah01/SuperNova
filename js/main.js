@@ -179,6 +179,14 @@ const sanitizeInput = (input) => {
     return sanitized.trim();
 };
 
+// =====================================================
+// CONTACT FORM API CONFIGURATION
+// =====================================================
+// Replace this URL with your CloudFlare Worker URL after deployment
+// Example: 'https://supernova-contact-form.your-subdomain.workers.dev'
+const CONTACT_API_URL = 'https://supernova-contact-form.misbahu094.workers.dev';
+// =====================================================
+
 // Rate Limiting - Check if user can submit
 const checkRateLimit = () => {
     const lastSubmit = localStorage.getItem('lastFormSubmit');
@@ -240,7 +248,7 @@ const initializeForm = () => {
         csrfInput.value = generateCSRFToken();
     }
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Check rate limiting
@@ -281,6 +289,7 @@ const initializeForm = () => {
         // Validate form
         if (!formData.name || !formData.email || !formData.message) {
             console.error('❌ Validation failed: Please fill in all required fields');
+            alert('Please fill in all required fields.');
             return;
         }
 
@@ -288,6 +297,7 @@ const initializeForm = () => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(formData.email)) {
             console.error('❌ Validation failed: Invalid email address format');
+            alert('Please enter a valid email address.');
             return;
         }
 
@@ -295,65 +305,129 @@ const initializeForm = () => {
         const nameRegex = /^[a-zA-Z\s]{2,100}$/;
         if (!nameRegex.test(formData.name)) {
             console.error('❌ Validation failed: Name should only contain letters and spaces');
+            alert('Name should only contain letters and spaces.');
             return;
         }
 
         // Message length validation
         if (formData.message.length < 10 || formData.message.length > 2000) {
             console.error('❌ Validation failed: Message must be between 10 and 2000 characters');
+            alert('Message must be between 10 and 2000 characters.');
             return;
         }
 
         // CSRF token validation (check if exists)
         if (!formData.csrf_token || formData.csrf_token.length !== 64) {
             console.error('❌ Security validation failed: Invalid CSRF token');
+            alert('Security validation failed. Please refresh the page and try again.');
             return;
         }
 
-        // Update rate limit
+        // Update rate limit timestamp
         localStorage.setItem('lastFormSubmit', Date.now().toString());
 
-        // Log form submission to console
-        console.log('\n📧 NEW CONTACT FORM SUBMISSION');
+        // Log form submission to console (for debugging)
+        console.log('\n📧 SENDING CONTACT FORM...');
         console.log('=================================');
-        console.log('✅ All security checks passed');
-        console.log('🔒 XSS Protection: Applied');
-        console.log('🔒 SQL Injection Protection: Applied');
         console.log('Name:', formData.name);
         console.log('Email:', formData.email);
         console.log('Subject:', formData.subject);
         console.log('Service:', formData.service);
-        console.log('Message:', formData.message);
-        console.log('CSRF Token:', formData.csrf_token.substring(0, 16) + '...');
-        console.log('Timestamp:', new Date().toLocaleString());
         console.log('=================================');
-        console.log('🔒 Security Features Applied:');
-        console.log('  ✓ Input Sanitization');
-        console.log('  ✓ Email Validation');
-        console.log('  ✓ CSRF Protection');
-        console.log('  ✓ Honeypot Detection');
-        console.log('  ✓ Rate Limiting (60s cooldown)');
-        console.log('  ✓ Field Length Validation');
-        console.log('  ✓ XSS Protection');
-        console.log('  ✓ SQL Injection Protection');
-        console.log('=================================\n');
 
-        // Show success message
-        submitBtn.textContent = 'Message Sent! ✓';
-        submitBtn.style.background = 'var(--gradient-2)';
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
 
-        // Reset form
-        form.reset();
+        // Check if API URL is configured
+        if (CONTACT_API_URL === 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
+            // Development mode - just log to console
+            console.log('\n⚠️ DEVELOPMENT MODE - API not configured');
+            console.log('📝 Form data logged above. To send real emails:');
+            console.log('1. Deploy CloudFlare Worker (see cloudflare-worker/SETUP_GUIDE.md)');
+            console.log('2. Update CONTACT_API_URL in main.js');
 
-        // Regenerate CSRF token after form reset
-        if (csrfInput) {
-            csrfInput.value = generateCSRFToken();
+            // Show success for testing purposes
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Logged ✓';
+                submitBtn.style.background = 'var(--gradient-2)';
+                submitBtn.style.opacity = '1';
+
+                alert('📧 Development Mode\n\nForm data logged to console (Press F12 to view).\n\nTo send real emails, configure CloudFlare Worker.\nSee: cloudflare-worker/SETUP_GUIDE.md');
+
+                form.reset();
+                if (csrfInput) {
+                    csrfInput.value = generateCSRFToken();
+                }
+
+                setTimeout(() => {
+                    startCooldownTimer(submitBtn, 60);
+                }, 2000);
+            }, 1000);
+            return;
         }
 
-        // Start 60-second cooldown
-        setTimeout(() => {
-            startCooldownTimer(submitBtn, 60);
-        }, 2000);
+        // Production mode - send to CloudFlare Worker API
+        try {
+            const response = await fetch(CONTACT_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    service: formData.service,
+                    message: formData.message
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                // Success!
+                console.log('✅ Message sent successfully!');
+
+                submitBtn.textContent = 'Message Sent! ✓';
+                submitBtn.style.background = 'var(--gradient-2)';
+                submitBtn.style.opacity = '1';
+
+                alert('✅ Thank you!\n\nYour message has been sent successfully.\nWe\'ll get back to you within 24 hours.');
+
+                // Reset form
+                form.reset();
+
+                // Regenerate CSRF token
+                if (csrfInput) {
+                    csrfInput.value = generateCSRFToken();
+                }
+
+                // Start cooldown after success message
+                setTimeout(() => {
+                    startCooldownTimer(submitBtn, 60);
+                }, 2000);
+
+            } else {
+                // API returned an error
+                throw new Error(result.error || 'Failed to send message');
+            }
+
+        } catch (error) {
+            console.error('❌ Error sending message:', error);
+
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+            submitBtn.style.cssText = originalBtnStyle;
+
+            // Show error to user
+            alert('❌ Sorry, there was an error sending your message.\n\nPlease try again or email us directly at hello@supernova.agency');
+
+            // Don't start cooldown on error - let them retry immediately
+        }
     });
 };
 
