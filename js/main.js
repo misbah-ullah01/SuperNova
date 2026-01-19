@@ -143,291 +143,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form Validation and Submission
-// Generate CSRF Token
-const generateCSRFToken = () => {
-    return Array.from(crypto.getRandomValues(new Uint8Array(32)))
-        .map(b => b.toString(16).padStart(2, '0'))
-        .join('');
-};
-
-// Input Sanitization
-// Enhanced Input Sanitization with XSS and Injection Protection
-const sanitizeInput = (input) => {
-    if (!input) return '';
-
-    // Create a temporary div for HTML escaping
-    const div = document.createElement('div');
-    div.textContent = input;
-    let sanitized = div.innerHTML;
-
-    // Additional XSS protection - remove any script-like content
-    sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-    sanitized = sanitized.replace(/javascript:/gi, '');
-    sanitized = sanitized.replace(/on\w+\s*=/gi, ''); // Remove event handlers like onclick=
-
-    // SQL Injection protection - escape common SQL characters
-    sanitized = sanitized.replace(/['";\\]/g, '\\$&');
-    sanitized = sanitized.replace(/--/g, '');
-    sanitized = sanitized.replace(/\/\*/g, '');
-    sanitized = sanitized.replace(/\*\//g, '');
-
-    // Remove any null bytes
-    sanitized = sanitized.replace(/\0/g, '');
-
-    // Trim whitespace
-    return sanitized.trim();
-};
 
 // =====================================================
-// CONTACT FORM API CONFIGURATION
+// CONTACT FORM - Using FormSubmit.co (No backend needed)
 // =====================================================
-// Replace this URL with your CloudFlare Worker URL after deployment
-// Example: 'https://supernova-contact-form.your-subdomain.workers.dev'
-const CONTACT_API_URL = 'https://supernova-contact-form.misbahu094.workers.dev';
-// =====================================================
-
-// Rate Limiting - Check if user can submit
-const checkRateLimit = () => {
-    const lastSubmit = localStorage.getItem('lastFormSubmit');
-    const now = Date.now();
-    const cooldownPeriod = 60000; // 1 minute cooldown
-
-    if (lastSubmit && (now - parseInt(lastSubmit)) < cooldownPeriod) {
-        const remainingTime = Math.ceil((cooldownPeriod - (now - parseInt(lastSubmit))) / 1000);
-        return { allowed: false, remainingTime };
-    }
-    return { allowed: true };
-};
 
 const initializeForm = () => {
     const form = document.querySelector('.contact-form');
     if (!form) return;
 
-    const submitBtn = form.querySelector('.btn');
-    const originalBtnText = 'Send Message';
-    const originalBtnStyle = submitBtn.style.cssText;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (!submitBtn) return;
 
-    // Check if there's an active cooldown on page load
-    const checkAndStartCooldown = () => {
-        const rateLimitCheck = checkRateLimit();
-        if (!rateLimitCheck.allowed) {
-            startCooldownTimer(submitBtn, rateLimitCheck.remainingTime);
-        }
-    };
+    // Simple form validation before submission
+    form.addEventListener('submit', (e) => {
+        const name = form.querySelector('input[name="name"]');
+        const email = form.querySelector('input[name="email"]');
+        const message = form.querySelector('textarea[name="message"]');
 
-    // Start cooldown timer on button
-    const startCooldownTimer = (btn, seconds) => {
-        btn.disabled = true;
-        btn.style.background = '#4a5568';
-        btn.style.cursor = 'not-allowed';
-        btn.style.opacity = '0.6';
-
-        let remaining = seconds;
-        btn.textContent = `Wait ${remaining}s...`;
-
-        const countdownInterval = setInterval(() => {
-            remaining--;
-            if (remaining <= 0) {
-                clearInterval(countdownInterval);
-                btn.disabled = false;
-                btn.textContent = originalBtnText;
-                btn.style.cssText = originalBtnStyle;
-            } else {
-                btn.textContent = `Wait ${remaining}s...`;
-            }
-        }, 1000);
-    };
-
-    // Check on page load
-    checkAndStartCooldown();
-
-    // Generate and set CSRF token on page load
-    const csrfInput = form.querySelector('#csrf_token');
-    if (csrfInput) {
-        csrfInput.value = generateCSRFToken();
-    }
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Check rate limiting
-        const rateLimitCheck = checkRateLimit();
-        if (!rateLimitCheck.allowed) {
-            console.warn(`⏱️ Rate limit: Please wait ${rateLimitCheck.remainingTime} seconds before submitting again.`);
-            startCooldownTimer(submitBtn, rateLimitCheck.remainingTime);
+        // Basic validation
+        if (!name || !name.value || name.value.trim().length < 2) {
+            e.preventDefault();
+            alert('Please enter your name (at least 2 characters).');
             return;
         }
 
-        // Honeypot validation - if filled, it's likely a bot
-        const honeypot = form.querySelector('input[name="website"]')?.value;
-        if (honeypot) {
-            console.warn('🛡️ Security: Honeypot triggered - submission blocked');
-            return;
-        }
-
-        // Get and sanitize form data
-        const rawFormData = {
-            name: form.querySelector('input[name="name"]')?.value || '',
-            email: form.querySelector('input[name="email"]')?.value || '',
-            subject: form.querySelector('input[name="subject"]')?.value || '',
-            service: form.querySelector('select[name="service"]')?.value || '',
-            message: form.querySelector('textarea[name="message"]')?.value || '',
-            csrf_token: form.querySelector('#csrf_token')?.value || ''
-        };
-
-        // Sanitize all inputs
-        const formData = {
-            name: sanitizeInput(rawFormData.name),
-            email: sanitizeInput(rawFormData.email),
-            subject: sanitizeInput(rawFormData.subject),
-            service: sanitizeInput(rawFormData.service),
-            message: sanitizeInput(rawFormData.message),
-            csrf_token: rawFormData.csrf_token
-        };
-
-        // Validate form
-        if (!formData.name || !formData.email || !formData.message) {
-            console.error('❌ Validation failed: Please fill in all required fields');
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        // Advanced email validation
+        // Email validation
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(formData.email)) {
-            console.error('❌ Validation failed: Invalid email address format');
+        if (!email || !emailRegex.test(email.value.trim())) {
+            e.preventDefault();
             alert('Please enter a valid email address.');
             return;
         }
 
-        // Name validation - no special characters or numbers
-        const nameRegex = /^[a-zA-Z\s]{2,100}$/;
-        if (!nameRegex.test(formData.name)) {
-            console.error('❌ Validation failed: Name should only contain letters and spaces');
-            alert('Name should only contain letters and spaces.');
+        // Message validation
+        if (!message || !message.value || message.value.trim().length < 10) {
+            e.preventDefault();
+            alert('Please enter a message (at least 10 characters).');
             return;
         }
 
-        // Message length validation
-        if (formData.message.length < 10 || formData.message.length > 2000) {
-            console.error('❌ Validation failed: Message must be between 10 and 2000 characters');
-            alert('Message must be between 10 and 2000 characters.');
-            return;
-        }
-
-        // CSRF token validation (check if exists)
-        if (!formData.csrf_token || formData.csrf_token.length !== 64) {
-            console.error('❌ Security validation failed: Invalid CSRF token');
-            alert('Security validation failed. Please refresh the page and try again.');
-            return;
-        }
-
-        // Update rate limit timestamp
-        localStorage.setItem('lastFormSubmit', Date.now().toString());
-
-        // Log form submission to console (for debugging)
-        console.log('\n📧 SENDING CONTACT FORM...');
-        console.log('=================================');
-        console.log('Name:', formData.name);
-        console.log('Email:', formData.email);
-        console.log('Subject:', formData.subject);
-        console.log('Service:', formData.service);
-        console.log('=================================');
-
-        // Disable submit button and show loading state
+        // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         submitBtn.style.opacity = '0.7';
-        submitBtn.style.cursor = 'not-allowed';
 
-        // Check if API URL is configured
-        if (CONTACT_API_URL === 'YOUR_CLOUDFLARE_WORKER_URL_HERE') {
-            // Development mode - just log to console
-            console.log('\n⚠️ DEVELOPMENT MODE - API not configured');
-            console.log('📝 Form data logged above. To send real emails:');
-            console.log('1. Deploy CloudFlare Worker (see cloudflare-worker/SETUP_GUIDE.md)');
-            console.log('2. Update CONTACT_API_URL in main.js');
-
-            // Show success for testing purposes
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Logged ✓';
-                submitBtn.style.background = 'var(--gradient-2)';
-                submitBtn.style.opacity = '1';
-
-                alert('📧 Development Mode\n\nForm data logged to console (Press F12 to view).\n\nTo send real emails, configure CloudFlare Worker.\nSee: cloudflare-worker/SETUP_GUIDE.md');
-
-                form.reset();
-                if (csrfInput) {
-                    csrfInput.value = generateCSRFToken();
-                }
-
-                setTimeout(() => {
-                    startCooldownTimer(submitBtn, 60);
-                }, 2000);
-            }, 1000);
-            return;
-        }
-
-        // Production mode - send to CloudFlare Worker API
-        try {
-            const response = await fetch(CONTACT_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    subject: formData.subject,
-                    service: formData.service,
-                    message: formData.message
-                })
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                // Success!
-                console.log('✅ Message sent successfully!');
-
-                submitBtn.textContent = 'Message Sent! ✓';
-                submitBtn.style.background = 'var(--gradient-2)';
-                submitBtn.style.opacity = '1';
-
-                alert('✅ Thank you!\n\nYour message has been sent successfully.\nWe\'ll get back to you within 24 hours.');
-
-                // Reset form
-                form.reset();
-
-                // Regenerate CSRF token
-                if (csrfInput) {
-                    csrfInput.value = generateCSRFToken();
-                }
-
-                // Start cooldown after success message
-                setTimeout(() => {
-                    startCooldownTimer(submitBtn, 60);
-                }, 2000);
-
-            } else {
-                // API returned an error
-                throw new Error(result.error || 'Failed to send message');
-            }
-
-        } catch (error) {
-            console.error('❌ Error sending message:', error);
-
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-            submitBtn.style.cssText = originalBtnStyle;
-
-            // Show error to user
-            alert('❌ Sorry, there was an error sending your message.\n\nPlease try again or email us directly at hello@supernova.agency');
-
-            // Don't start cooldown on error - let them retry immediately
-        }
+        console.log('Submitting form to FormSubmit.co...');
     });
 };
 
