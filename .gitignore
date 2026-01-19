@@ -21,6 +21,11 @@ yarn-error.log*
 .env.local
 .env.*.local
 
+# CloudFlare Worker Configuration (SECURITY - contains account info)
+cloudflare-worker/wrangler.toml
+cloudflare-worker/.wrangler/
+wrangler.toml
+
 # Build outputs
 dist/
 build/

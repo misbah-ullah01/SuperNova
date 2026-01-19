@@ -34,11 +34,12 @@ async function handleRequest(request, env) {
   // Get environment variables (set in CloudFlare dashboard - NOT in code!)
   const RECIPIENT_EMAIL = env.RECIPIENT_EMAIL || 'your-email@example.com'
   const ALLOWED_ORIGIN = env.ALLOWED_ORIGIN || '*'
+  const FROM_EMAIL = env.FROM_EMAIL || 'noreply@example.com'
 
   // CORS Headers - restrict to your domain in production
   const corsHeaders = {
     'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Max-Age': '86400',
   }
@@ -51,7 +52,16 @@ async function handleRequest(request, env) {
     })
   }
 
-  // Only allow POST requests
+  // Handle GET request - show API status (useful for testing)
+  if (request.method === 'GET') {
+    return jsonResponse({
+      status: 'ok',
+      message: 'SuperNova Contact Form API is running',
+      usage: 'Send a POST request with name, email, subject, service, and message fields'
+    }, 200, corsHeaders)
+  }
+
+  // Only allow POST requests for form submission
   if (request.method !== 'POST') {
     return jsonResponse({
       error: 'Method not allowed',
@@ -61,7 +71,7 @@ async function handleRequest(request, env) {
 
   // Verify origin in production - blocks requests from unauthorized domains
   const origin = request.headers.get('Origin')
-  if (ALLOWED_ORIGIN !== '*' && origin !== ALLOWED_ORIGIN) {
+  if (ALLOWED_ORIGIN !== '*' && origin && origin !== ALLOWED_ORIGIN) {
     return jsonResponse({ error: 'Forbidden' }, 403, corsHeaders)
   }
 
@@ -88,12 +98,12 @@ async function handleRequest(request, env) {
     }
 
     // Send email using MailChannels (FREE with CloudFlare Workers)
-    const emailResult = await sendEmail(sanitizedData, RECIPIENT_EMAIL)
+    const emailResult = await sendEmail(sanitizedData, RECIPIENT_EMAIL, FROM_EMAIL)
 
     if (!emailResult.success) {
       console.error('Email send failed:', emailResult.error)
       return jsonResponse({
-        error: 'Failed to send email. Please try again later.'
+        error: 'Failed to send email: ' + emailResult.error
       }, 500, corsHeaders)
     }
 
@@ -174,7 +184,7 @@ function sanitizeInput(input) {
 /**
  * Send email using MailChannels API (free with CloudFlare Workers)
  */
-async function sendEmail(data, recipientEmail) {
+async function sendEmail(data, recipientEmail, fromEmail) {
   const { name, email, subject, service, message } = data
   const timestamp = new Date().toLocaleString('en-US', {
     timeZone: 'UTC',
@@ -202,7 +212,7 @@ async function sendEmail(data, recipientEmail) {
           },
         ],
         from: {
-          email: 'contact@supernova.agency',  // Your domain's email (can be any @yourdomain)
+          email: fromEmail,
           name: 'SuperNova Contact Form',
         },
         subject: `✦ Contact Form: ${subject}`,
