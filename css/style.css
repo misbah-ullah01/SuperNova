@@ -302,13 +302,15 @@ a {
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* SECTIONS */
 section {
     padding: var(--spacing-2xl) var(--spacing-lg);
-    overflow-x: hidden;
+    overflow: hidden;
+    max-width: 100vw;
+    position: relative;
 }
 
 section.hero {
@@ -318,6 +320,7 @@ section.hero {
     align-items: center;
     background: var(--gradient-1);
     position: relative;
+    overflow: hidden;
     overflow: hidden;
 }
 
@@ -480,6 +483,7 @@ section.hero {
 /* SERVICES PAGE */
 section.services {
     background: var(--bg-dark);
+    overflow: hidden;
 }
 
 .section-title {
@@ -594,6 +598,7 @@ section.services {
 /* PORTFOLIO PAGE */
 section.portfolio {
     background: var(--bg-dark);
+    overflow: hidden;
 }
 
 .portfolio-grid {
@@ -670,6 +675,7 @@ section.portfolio {
 /* ABOUT PAGE */
 section.about {
     background: var(--bg-dark);
+    overflow: hidden;
 }
 
 .about-intro {
@@ -810,6 +816,7 @@ section.about {
 /* CONTACT PAGE */
 section.contact {
     background: linear-gradient(135deg, rgba(10, 31, 58, 0.7) 0%, rgba(26, 58, 82, 0.7) 100%);
+    overflow: hidden;
 }
 
 .contact-container {
@@ -951,6 +958,8 @@ footer {
     border-top: 1px solid var(--border-light);
     padding: var(--spacing-2xl) var(--spacing-lg);
     margin-top: var(--spacing-2xl);
+    overflow: hidden;
+    max-width: 100vw;
 }
 
 .footer-container {
