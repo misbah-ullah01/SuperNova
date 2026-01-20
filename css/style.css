@@ -284,11 +284,14 @@ a {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* SECTIONS */
 section {
     padding: var(--spacing-2xl) var(--spacing-lg);
+    overflow-x: hidden;
 }
 
 section.hero {
