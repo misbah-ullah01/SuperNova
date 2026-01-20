@@ -80,6 +80,7 @@
     animation: shootingStar var(--shoot-duration) ease-out infinite;
     animation-delay: var(--shoot-delay);
     opacity: 0;
+    pointer-events: none;
 }
 
 @keyframes shootingStar {
@@ -110,6 +111,8 @@
     filter: blur(60px);
     opacity: 0.4;
     animation: floatOrb 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .cosmic-orb-1 {
@@ -171,6 +174,7 @@
         radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(59, 130, 246, 0.02) 60%, transparent 70%);
     animation: lightWaveRotate 30s linear infinite;
     z-index: 0;
+    pointer-events: none;
 }
 
 @keyframes lightWaveRotate {
@@ -194,6 +198,7 @@
         radial-gradient(ellipse at 50% 50%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
     animation: nebulaShift 20s ease-in-out infinite;
     z-index: 0;
+    pointer-events: none;
 }
 
 @keyframes nebulaShift {
@@ -1100,11 +1105,12 @@
 /* Services Grid */
 .services-preview {
     background: linear-gradient(180deg, #0a1628 0%, #020817 100%);
+    overflow: hidden;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 

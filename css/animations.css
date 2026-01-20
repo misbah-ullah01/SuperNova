@@ -338,6 +338,8 @@
         radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 45%);
     animation: gradientShift 20s ease-in-out infinite;
     z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 @keyframes gradientShift {

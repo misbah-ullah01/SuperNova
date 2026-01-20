@@ -50,6 +50,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -60,6 +61,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    position: relative;
 }
 
 /* SCROLLBAR STYLING */
@@ -315,6 +317,8 @@ section.hero {
         radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
     animation: bgShift 15s ease-in-out infinite;
     z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 @keyframes bgShift {
