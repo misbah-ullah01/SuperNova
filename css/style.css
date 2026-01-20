@@ -408,6 +408,8 @@ section.hero {
     transition: all var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .card::before {
@@ -441,7 +443,7 @@ section.hero {
 .grid-2 {
     display: grid;
     gap: var(--spacing-lg);
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
 }
 
 .grid-3 {
@@ -453,7 +455,7 @@ section.hero {
 .grid-4 {
     display: grid;
     gap: var(--spacing-lg);
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
 }
 
 /* SERVICES PAGE */
@@ -494,6 +496,8 @@ section.services {
     padding: var(--spacing-xl);
     transition: all var(--transition-smooth);
     position: relative;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .package-card.featured {
@@ -655,6 +659,8 @@ section.about {
     gap: var(--spacing-2xl);
     align-items: center;
     margin-bottom: var(--spacing-2xl);
+    width: 100%;
+    overflow: hidden;
 }
 
 .about-intro-text h2 {
@@ -668,9 +674,10 @@ section.about {
 
 .about-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-2xl);
+    width: 100%;
 }
 
 .stat {
@@ -792,6 +799,8 @@ section.contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-2xl);
+    width: 100%;
+    overflow: hidden;
 }
 
 .contact-info {
@@ -929,9 +938,10 @@ footer {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: var(--spacing-2xl);
     margin-bottom: var(--spacing-2xl);
+    width: 100%;
 }
 
 .footer-section h3 {
@@ -1185,6 +1195,7 @@ footer {
     .btn {
         padding: 0.875rem 1.5rem;
         font-size: 0.95rem;
+        max-width: 100%;
     }
 
     .btn-lg {
@@ -1208,16 +1219,52 @@ footer {
         min-height: 180px;
     }
 
+    .package-card {
+        padding: 1.25rem;
+    }
+
     .package-price {
         font-size: 2rem;
+    }
+
+    .package-features li {
+        font-size: 0.9rem;
+        padding: 0.75rem 0;
     }
 
     .grid-4 {
         grid-template-columns: 1fr;
     }
 
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
     .contact-form {
         gap: 1rem;
+    }
+
+    .contact-container {
+        gap: 2rem;
+    }
+
+    /* About page stats */
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    /* Section padding */
+    section {
+        padding: 2rem 1rem;
     }
 }
 
